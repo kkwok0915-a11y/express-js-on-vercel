@@ -1,8 +1,11 @@
 import express from "express";
 import dbRegistrationRouter from "./database-route/database-register.js";
+import dbAuthRouter from "./database-route/database-authentication.js";
 
 const app = express();
+app.use(express.json());
 app.use("/v1/registration", dbRegistrationRouter);
+app.use("/v1/authentication", dbAuthRouter);
 
 // Home route - HTML
 app.get("/", (req, res) => {

@@ -1,10 +1,10 @@
 import express from "express";
 import supabase from "./database.js";
 
-const dbRegistrationRouter = express.Router();
+const dbAuthRouter = express.Router();
 
 // Define route for users to register their details into DB
-dbRegistrationRouter.post("/", async (req, res) => {
+dbAuthRouter.post("/", async (req, res) => {
   // Get userEmail
   const userEmail = req.body.userEmail;
   const userPassword = req.body.userPassword;
@@ -15,7 +15,7 @@ dbRegistrationRouter.post("/", async (req, res) => {
     });
   }
 
-  const { data, error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email: userEmail,
     password: userPassword,
   });
@@ -27,4 +27,4 @@ dbRegistrationRouter.post("/", async (req, res) => {
   }
 });
 
-export default dbRegistrationRouter;
+export default dbAuthRouter;
