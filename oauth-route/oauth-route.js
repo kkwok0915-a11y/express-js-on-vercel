@@ -4,7 +4,7 @@ import supabase from "./database.js";
 const oauthRoute = express.Router();
 
 // Define route for users to register their details into DB
-oauthRoute.get('/auth/login', async (req, res) => {
+oauthRoute.get('/login', async (req, res) => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'github'
   });
@@ -16,7 +16,7 @@ oauthRoute.get('/auth/login', async (req, res) => {
 });
 
 // 2. The Callback Route
-app.get('/auth/callback', async (req, res) => {
+app.get('/callback', async (req, res) => {
   const code = req.query.code;
   if (code) {
     // This swaps the temporary code for a session on the server

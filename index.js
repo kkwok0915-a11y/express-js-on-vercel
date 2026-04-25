@@ -21,7 +21,7 @@ app.use(express.json());
 // API Call
 app.use("/v1/registration", dbRegistrationRouter);
 app.use("/v1/authentication", dbAuthRouter);
-app.use("/v1/oauth", oauthRoute);
+app.use("/v1/auth", oauthRoute);
 app.get("/v1/api-data", (req, res) => {
   res.json([
     {
