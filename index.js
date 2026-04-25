@@ -29,7 +29,7 @@ app.get("/v1/api-data", (req, res) => {
       status: "In Process",
       target: "18",
       limit: "5",
-      reviewer: "Eddie Lake",
+      reviewer: "Eddie Lakes",
     },
     {
       id: 2,
