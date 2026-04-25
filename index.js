@@ -10,11 +10,16 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(express.json());
-app.use("/v1/registration", dbRegistrationRouter);
-app.use("/v1/authentication", dbAuthRouter);
+// Enable cors
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
+
+// Body parser
+app.use(express.json());
+
+// API Call
+app.use("/v1/registration", dbRegistrationRouter);
+app.use("/v1/authentication", dbAuthRouter);
 
 // Home route - HTML
 app.get("/", (req, res) => {
