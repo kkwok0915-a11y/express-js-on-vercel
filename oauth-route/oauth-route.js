@@ -9,7 +9,7 @@ oauthRoute.get("/login", async (req, res) => {
     provider: "github",
     options: {
       redirectTo:
-        "https://express-js-on-vercel-kkwok0915-a11ys-projects.vercel.app/auth/callback",
+        "https://express-js-on-vercel-kkwok0915-a11ys-projects.vercel.app/v1/auth/callback",
     },
   });
 
