@@ -5,8 +5,8 @@ import dotenv from "dotenv";
 dotenv.config({ path: ".env.local" });
 
 const supabase = createClient(
-  process.env.databaseEndpoint,
-  process.env.databaseSecretKey,
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_PUBLISHABLE_KEY,
 );
 
 export default supabase;

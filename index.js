@@ -5,7 +5,7 @@ import dbAuthRouter from "./database-route/database-authentication.js";
 
 const app = express();
 const corsOptions = {
-  origin: "https://next-js-demo-lilac-one.vercel.app", // Allow only your frontend
+  origin: process.env.WEB_APP_ENDPOINT, // Allow only your frontend
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Explicitly include OPTIONS for preflight
   credentials: true,
 };
