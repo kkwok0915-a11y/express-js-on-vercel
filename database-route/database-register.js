@@ -8,6 +8,7 @@ dbRegistrationRouter.post("/", async (req, res) => {
   // Get userEmail
   const userEmail = req.body.userEmail;
   const userPassword = req.body.userPassword;
+  const userName = req.body.userName;
 
   if (!userEmail || !userPassword) {
     return res.status(400).send({
@@ -18,6 +19,7 @@ dbRegistrationRouter.post("/", async (req, res) => {
   const { data, error } = await supabase.auth.signUp({
     email: userEmail,
     password: userPassword,
+    options: userName ? { data: { fullName: userName } } : undefined,
   });
 
   if (error) {
