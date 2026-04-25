@@ -1,5 +1,5 @@
 import express from "express";
-import supabase from "./database.js";
+import supabase from "../database-route/database.js";
 
 const oauthRoute = express.Router();
 
@@ -16,7 +16,7 @@ oauthRoute.get('/login', async (req, res) => {
 });
 
 // 2. The Callback Route
-app.get('/callback', async (req, res) => {
+oauthRoute.get('/callback', async (req, res) => {
   const code = req.query.code;
   if (code) {
     // This swaps the temporary code for a session on the server
