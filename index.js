@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dbRegistrationRouter from "./database-route/database-register.js";
 import dbAuthRouter from "./database-route/database-authentication.js";
+import oauthRoute from "./oauth-route/oauth-route.js";
 
 const app = express();
 const corsOptions = {
@@ -20,6 +21,7 @@ app.use(express.json());
 // API Call
 app.use("/v1/registration", dbRegistrationRouter);
 app.use("/v1/authentication", dbAuthRouter);
+app.use("/v1/oauth", oauthRoute);
 app.get("/v1/api-data", (req, res) => {
   res.json([
     {
