@@ -8,6 +8,7 @@ const app = express();
 const corsOptions = {
   origin:  [process.env.WEB_APP_ENDPOINT, "https://github.com", 'http://localhost:3000'], // Allow only your frontend
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Explicitly include OPTIONS for preflight
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 };
 
