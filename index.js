@@ -3,7 +3,6 @@ import cors from "cors";
 import dbRegistrationRouter from "./database-route/database-register.js";
 import dbAuthRouter from "./database-route/database-authentication.js";
 import oauthRoute from "./oauth-route/oauth-route.js";
-oauthRoute
 
 const app = express();
 const corsOptions = {
