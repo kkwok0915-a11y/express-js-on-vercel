@@ -4,17 +4,17 @@ import dbRegistrationRouter from "./database-route/database-register.js";
 import dbAuthRouter from "./database-route/database-authentication.js";
 
 const app = express();
+const corsOptions = {
+  origin: "https://next-js-demo-lilac-one.vercel.app", // Allow only your frontend
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Explicitly include OPTIONS for preflight
+  credentials: true,
+};
 
 app.use(express.json());
 app.use("/v1/registration", dbRegistrationRouter);
 app.use("/v1/authentication", dbAuthRouter);
-app.use(
-  cors({
-    origin: "https://next-js-demo-lilac-one.vercel.app", // Allow only your frontend
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Explicitly include OPTIONS for preflight
-    credentials: true,
-  }),
-);
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 // Home route - HTML
 app.get("/", (req, res) => {
