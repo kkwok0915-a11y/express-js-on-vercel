@@ -20,14 +20,7 @@ app.use(express.json());
 // API Call
 app.use("/v1/registration", dbRegistrationRouter);
 app.use("/v1/authentication", dbAuthRouter);
-
-// Home route - HTML
-app.get("/", (req, res) => {
-  res.status(200).send("Hello world");
-});
-
-// Example API endpoint - JSON
-app.get("/api-data", (req, res) => {
+app.get("/v1/api-data", (req, res) => {
   res.json([
     {
       id: 1,
@@ -642,6 +635,11 @@ app.get("/api-data", (req, res) => {
       reviewer: "Assign reviewer",
     },
   ]);
+});
+
+// Home route - HTML
+app.get("/", (req, res) => {
+  res.status(200).send("Hello world");
 });
 
 // Health check
