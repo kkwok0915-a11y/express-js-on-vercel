@@ -623,12 +623,14 @@ dbMockDataRoute.get("/", async (req, res) => {
 
 // Get visitor records
 dbMockDataRoute.get("/visitors", async (req, res) => {
-  const { data, error } = await supabase.from("VisitorData").select();
+  const { data, error } = await supabase.from("VisitorData").select("*");
+
   if (error) {
-    res.status(400).send({ errorObject: error });
-  } else {
-    res.status(200).send({ data });
+    console.error("Supabase Error:", error.message);
+    return []; // Return empty array on error
   }
+
+  return data; // This returns the actual rows from your table
 });
 
 export default dbMockDataRoute;
