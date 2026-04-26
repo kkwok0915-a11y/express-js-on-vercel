@@ -627,10 +627,10 @@ dbMockDataRoute.get("/visitors", async (req, res) => {
 
   if (error) {
     console.error("Supabase Error:", error.message);
-    return []; // Return empty array on error
+    return res.status(400).send(error); // Return empty array on error
   }
 
-  return data; // This returns the actual rows from your table
+  return res.status(200).send(data); // This returns the actual rows from your table
 });
 
 export default dbMockDataRoute;
